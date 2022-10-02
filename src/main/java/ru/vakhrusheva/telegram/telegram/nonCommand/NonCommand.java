@@ -60,10 +60,10 @@ public class NonCommand {
 
     private void validateSettings(int level, int numberOfWords) {
         if (level == 0 || numberOfWords == 0) {
-            throw new IllegalSettingsException("\uD83D\uDCA9 Ни один из параметров не может равняться 0.");
+            throw new IllegalSettingsException("Ни один из параметров не может равняться 0.");
         }
         if (level > 3 || numberOfWords > 50) {
-            throw new IllegalSettingsException("\uD83D\uDCA9 Заданные значения слишком велики.");
+            throw new IllegalSettingsException("Заданные значения слишком велики.");
         }
     }
 
