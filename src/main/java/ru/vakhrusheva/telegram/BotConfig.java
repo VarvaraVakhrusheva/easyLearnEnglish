@@ -2,7 +2,6 @@ package ru.vakhrusheva.telegram;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import ru.vakhrusheva.telegram.telegram.Bot;
 import ru.vakhrusheva.telegram.telegram.commands.service.HelpCommand;
