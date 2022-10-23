@@ -24,7 +24,6 @@ public class WordFileProcessorImpl {
         XWPFParagraph paragraph = doc.getLastParagraph();
         XWPFRun run = paragraph.createRun();
         setRunParameters(run, taskList.get(0));
-
         //запись оставшихся строк списка заданий путём создания для каждой нового абзаца
         for (int i = 1; i < taskList.size(); i++) {
             paragraph = doc.createParagraph();
