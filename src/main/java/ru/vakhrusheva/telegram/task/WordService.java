@@ -37,7 +37,7 @@ public class WordService {
         if (taskList.isEmpty()) {
             throw new IllegalArgumentException(String.format("По непонятным причинам по заданным настройкам " +
                     "(level = %s, numberOfWords = %s) не удалось создать ни одной строки " +
-                    "с задачами", settings.getLevel(), settings.getNumberOfWords()));
+                    "со словами", settings.getLevel(), settings.getNumberOfWords()));
         }
         return fileProcessor.createWordFile(taskList);
     }
