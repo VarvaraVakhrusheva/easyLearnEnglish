@@ -3,6 +3,7 @@ package ru.vakhrusheva.telegram.task;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ class WordServiceTest {
         this.service = new WordService(new WordFileProcessorImpl());
     }
 
+    @Disabled
     @Test
     void getArithmeticFileTest() throws IOException {
         logger.info("Начинаем создание настроек");
