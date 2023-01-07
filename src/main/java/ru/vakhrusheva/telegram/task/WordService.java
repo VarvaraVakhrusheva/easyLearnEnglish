@@ -48,7 +48,7 @@ public class WordService {
   private void fillTaskList(Settings settings, List<String> taskList, String s) throws IOException {
     Path path;
     long count;
-    String absolutePath = "/home/mentalCalculationBot-master/src/main/resources/";
+    String absolutePath = "C:\\Users\\vavik\\Desktop\\Java\\mentalCalculationBot-master\\src\\main\\resources\\";
     path = Paths.get(absolutePath + s);
     count = Files.lines(path).count();
     for (int i = 1; i <= settings.getNumberOfWords(); i++) {

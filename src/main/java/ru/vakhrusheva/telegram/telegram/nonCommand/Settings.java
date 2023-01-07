@@ -7,12 +7,12 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Settings {
 
-    private int level;
+  private int level;
 
-    private int numberOfWords;
+  private int numberOfWords;
 
-    public Settings(int level, int numberOfWords) {
-        this.level = level;
-        this.numberOfWords = numberOfWords;
-}
+  public Settings(int level, int numberOfWords) {
+    this.level = level;
+    this.numberOfWords = numberOfWords;
+  }
 }
