@@ -72,17 +72,4 @@ public class GrammarCommand extends BotCommand {
         answer.setReplyMarkup(inlineKeyboardMarkup);
         return answer;
     }
-
-    public void sendAnswer(AbsSender absSender, Long chatId, String userName, String text) {
-        SendMessage message = new SendMessage();
-        message.enableMarkdown(true);
-        message.setChatId(chatId.toString());
-        message.setText(text);
-        try {
-            absSender.execute(message);
-        } catch (TelegramApiException e) {
-            logger.error(String.format("Ошибка %s. Пользователь: %s", e.getMessage(), userName));
-            e.printStackTrace();
-        }
-    }
 }
