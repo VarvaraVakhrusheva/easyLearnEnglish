@@ -2,11 +2,8 @@ package ru.vakhrusheva.telegram.telegram.nonCommand;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import ru.vakhrusheva.telegram.exceptions.IllegalSettingsException;
 import ru.vakhrusheva.telegram.telegram.Bot;
 

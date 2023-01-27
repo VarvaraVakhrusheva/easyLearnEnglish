@@ -6,13 +6,12 @@ import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.vakhrusheva.telegram.Utils;
+import ru.vakhrusheva.telegram.telegram.nonCommand.NonCommandUtil;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GrammarCommand extends BotCommand {
@@ -37,39 +36,8 @@ public class GrammarCommand extends BotCommand {
     }
 
     public SendMessage menu(Long chatId) {
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-
-        InlineKeyboardButton inlineKeyboardButton1 = new InlineKeyboardButton();
-        InlineKeyboardButton inlineKeyboardButton2 = new InlineKeyboardButton();
-        InlineKeyboardButton inlineKeyboardButton3 = new InlineKeyboardButton();
-        InlineKeyboardButton inlineKeyboardButton4 = new InlineKeyboardButton();
-        inlineKeyboardButton1.setText("Времена");
-        inlineKeyboardButton1.setCallbackData("Времена");
-        inlineKeyboardButton2.setText("Синтаксис");
-        inlineKeyboardButton2.setCallbackData("Синтаксис");
-        inlineKeyboardButton3.setText("Глаголы");
-        inlineKeyboardButton3.setCallbackData("Глаголы");
-        inlineKeyboardButton4.setText("Части речи");
-        inlineKeyboardButton4.setCallbackData("Части речи");
-
-        List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
-        List<InlineKeyboardButton> keyboardButtonsRow2 = new ArrayList<>();
-        List<InlineKeyboardButton> keyboardButtonsRow3 = new ArrayList<>();
-        List<InlineKeyboardButton> keyboardButtonsRow4 = new ArrayList<>();
-        keyboardButtonsRow1.add(inlineKeyboardButton1);
-        keyboardButtonsRow2.add(inlineKeyboardButton2);
-        keyboardButtonsRow3.add(inlineKeyboardButton3);
-        keyboardButtonsRow4.add(inlineKeyboardButton4);
-        List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
-        rowList.add(keyboardButtonsRow1);
-        rowList.add(keyboardButtonsRow2);
-        rowList.add(keyboardButtonsRow3);
-        rowList.add(keyboardButtonsRow4);
-        inlineKeyboardMarkup.setKeyboard(rowList);
-        SendMessage answer = new SendMessage();
-        answer.setChatId(String.valueOf(chatId));
-        answer.setText("Выберите тему, которая вас интересует:");
-        answer.setReplyMarkup(inlineKeyboardMarkup);
-        return answer;
+        List<String> buttonsAndCallback = Arrays.asList("Времена", "Синтаксис", "Глаголы", "Части речи");
+        return NonCommandUtil.getSendMessage(chatId, "Выберите тему, которая вас интересует:",
+                buttonsAndCallback, buttonsAndCallback);
     }
 }

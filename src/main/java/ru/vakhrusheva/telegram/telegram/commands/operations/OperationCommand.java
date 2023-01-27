@@ -15,6 +15,9 @@ import ru.vakhrusheva.telegram.fileProcessor.WordFileProcessorImpl;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 abstract class OperationCommand extends BotCommand {
   private Logger logger = LoggerFactory.getLogger(OperationCommand.class);
@@ -31,9 +34,25 @@ abstract class OperationCommand extends BotCommand {
       OperationEnum level,
       String description,
       String commandName,
-      String userName) {
+      String userName,
+      String[] strings) {
     try {
-      absSender.execute(createDocument(chatId, level, description));
+      SendDocument document = createDocument(chatId, level, description);
+      if (strings.length == 0) {
+        absSender.execute(document);
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(4);
+        scheduledExecutorService.schedule(
+            new ResendWordsTask(level, document, absSender, userName, chatId), 9, TimeUnit.HOURS);
+        scheduledExecutorService.schedule(
+            new ResendWordsTask(level, document, absSender, userName, chatId), 24, TimeUnit.HOURS);
+        scheduledExecutorService.schedule(
+            new ResendWordsTask(level, document, absSender, userName, chatId), 7, TimeUnit.DAYS);
+        scheduledExecutorService.schedule(
+            new ResendWordsTask(level, document, absSender, userName, chatId), 12, TimeUnit.DAYS);
+        scheduledExecutorService.shutdown();
+      } else {
+        absSender.execute(document);
+      }
     } catch (IOException | RuntimeException e) {
       logger.error(
           String.format(

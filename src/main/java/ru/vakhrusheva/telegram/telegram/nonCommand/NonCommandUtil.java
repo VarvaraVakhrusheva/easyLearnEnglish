@@ -13,8 +13,7 @@ import java.util.List;
 
 public class NonCommandUtil {
 
-  public static SendMessage getSendMessage(
-      Long chatId, String text, List<String> buttons, List<String> callbackData) {
+  public static SendMessage getSendMessage(Long chatId, String text, List<String> buttons, List<String> callbackData) {
     SendMessage answer;
     InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
     List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
