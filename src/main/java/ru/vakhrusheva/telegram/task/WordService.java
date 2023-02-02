@@ -28,7 +28,7 @@ public class WordService {
         fillTaskList(settings, taskList, "basic.txt");
         break;
       case INTERMEDIATE:
-        fillTaskList(settings, taskList, "intermediate.txt");
+        fillTaskList(settings, taskList, "inter.txt");
         break;
       case ADVANCED:
         fillTaskList(settings, taskList, "advanced.txt");
